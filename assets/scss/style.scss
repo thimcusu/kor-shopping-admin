@@ -1,0 +1,11 @@
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+@import "~tailwindcss/utilities";
+
+@layer utilities {
+  @variants responsive {
+    .flex-basis-48per {
+      flex-basis: 48%;
+    }
+  }
+}
