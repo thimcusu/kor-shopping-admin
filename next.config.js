@@ -1,4 +1,5 @@
 const path = require('path');
+const { i18n } = require('./next-i18next.config');
 
 module.exports = () => {
   const localeSubpaths = {};
@@ -50,6 +51,7 @@ module.exports = () => {
 
   return {
     publicRuntimeConfig,
+    i18n,
     sassOptions,
     devIndicators,
     webpack,

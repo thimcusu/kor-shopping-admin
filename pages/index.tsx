@@ -1,15 +1,18 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import React from 'react';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+import Login from './login';
+import { CookiesStorage } from 'shared/config/cookie';
+import Dashboard from './dashboard';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import nextI18nextConfig from 'next-i18next.config';
 
-export default IndexPage
+const Index = () => (CookiesStorage.authenticated() ? <Dashboard loading={false} /> : <Login />);
+
+export default Index;
+
+export const getStaticProps: GetStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common'], nextI18nextConfig)),
+  },
+});

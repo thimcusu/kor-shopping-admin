@@ -16,7 +16,7 @@ const customizer = (objValue: any, srcValue: any, key: string) => {
 };
 
 export const generateToken = () => ({
-  Authorization: `Bearer ${CookiesStorage.getAccessToken()}`,
+  Authorization: 'Bearer ' + CookiesStorage.getAccessToken(),
   // todo
 });
 
@@ -128,7 +128,6 @@ axios.interceptors.response.use(
       CookiesStorage.clearAccessToken();
       return Router.push(ROUTER.Login);
     }
-
     return Promise.reject(handleErrorStatus(errorResponse));
   }
 );

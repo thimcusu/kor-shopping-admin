@@ -1,37 +1,48 @@
-import { GetStaticProps } from 'next'
-import Link from 'next/link'
+import withAuth from '@/components/HOCs/withAuth';
+import MainLayout from '@/components/layout/mainLayout';
+import { User } from '@/types/user';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import nextI18nextConfig from 'next-i18next.config';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import React from 'react';
+import Api from 'shared/config/api';
+import { URL_USERS } from 'shared/constant/endpoints';
 
-import { User } from '../../types'
-import { sampleUserData } from '../../utils/sample-data'
-import Layout from '../../components/Layout'
-import List from '../../components/List'
+const UserPage = ({ users = [] }: {users: User[]}) => {
+  return (
+    <MainLayout customClass="user-page" headData={{ title: 'Users' }}>
+      <h1 className="mx-auto">User</h1>
+      <table className=''>
+        <thead>
+          <th>Number</th>
+          <th>User name</th>
+          <th>Email</th>
+          <th>Active</th>
+          <th>Admin</th>
+        </thead>
+        <tbody>
+          {users.map(user =>(<tr>
+            <td>{user.id}</td>
+            <td>{user.userName}</td>
+            <td>{user.email}</td>
+            <td>{user.active}</td>
+            <td>{user.admin}</td>
+          </tr>) )}
+        </tbody>
+      </table>
+    </MainLayout>
+  );
+};
 
-type Props = {
-  items: User[]
-}
+export default withAuth(UserPage);
 
-const WithStaticProps = ({ items }: Props) => (
-  <Layout title="Users List | Next.js + TypeScript Example">
-    <h1>Users List</h1>
-    <p>
-      Example fetching data from inside <code>getStaticProps()</code>.
-    </p>
-    <p className="bg-gray-300 text-blue-400">You are currently on: /users</p>
-    <List items={items} />
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
-  </Layout>
-)
-
-export const getStaticProps: GetStaticProps = async () => {
-  // Example for including static props in a Next.js function component page.
-  // Don't forget to include the respective types for any props passed into
-  // the component.
-  const items: User[] = sampleUserData
-  return { props: { items } }
-}
-
-export default WithStaticProps
+export const getStaticProps: GetStaticProps = async ({ locale }: { locale: string }) => {
+  const res = await Api.get(URL_USERS);
+  const { data } = res.data;
+  return {
+    props: {
+      users: data,
+      ...(await serverSideTranslations(locale, ['common'], nextI18nextConfig)),
+    },
+  };
+};

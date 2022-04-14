@@ -1,0 +1,37 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 80%;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+/* 0.625em(10px) @ 48em(768px) increasing to 1em(16px) @ 64em(1024px) */
+@screen md {
+  html {
+    font-size: calc(0.8rem + ((1vw - 0.48em) * 2.3438));
+    /* Where: 2.3438 = 100 * font-size_difference / viewport_width_difference */
+
+    /* Safari resize fix */
+    min-height: 0vw;
+  }
+  body {
+    font-size: 1em;
+  }
+}
+/* Prevent scaling beyond this breakpoint */
+@screen lg {
+  html, body{
+    font-size: 1em;
+  }
+}
+#root {
+  max-width: 100%;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+}

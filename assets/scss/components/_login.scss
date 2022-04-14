@@ -1,0 +1,48 @@
+body.login-page {
+  background-color: #bbc4d6;
+}
+
+.login-wrapper {
+  flex-grow: 5;
+  flex-basis: 600px;
+  ::-webkit-input-placeholder {
+    text-transform: initial;
+  }
+
+  :-moz-placeholder {
+    text-transform: initial;
+  }
+
+  ::-moz-placeholder {
+    text-transform: initial;
+  }
+
+  :-ms-input-placeholder {
+    text-transform: initial;
+  }
+}
+
+.login-bar {
+  flex-grow: 2;
+  flex-basis: 250px;
+}
+
+.login-bar .nav-item {
+  &.active:before {
+    transition: width 0.3 ease;
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 15%;
+    bottom: 20%;
+    width: 8px;
+    background-color: #1a33d5;
+  }
+  // &:hover::before {
+  //   width: 8px;
+  // }
+}
+.welcome-login {
+  flex-grow: 5;
+  flex-basis: 600px;
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Chào mừng trở lại!",
+  "note": "Trang quản lý sản phẩm của KorShop đang chờ đợi Boss",
+  "sub_title": "Nhập email và mật khẩu để truy cập vào trang quản lý!",
+  "password": "Mật khẩu",
+  "email": "Email",
+  "forgot_password": "Quên mật khẩu?",
+  "wrong_password": "Email và mật khẩu không đúng",
+  "btn_login": "Đăng nhập",
+  "remember_me": "Remember me",
+  "email_required": "Yêu cầu nhập Email",
+  "password_required": "Yêu cầu nhập mật khẩu"
+}

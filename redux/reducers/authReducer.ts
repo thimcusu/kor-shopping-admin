@@ -1,6 +1,7 @@
 import { Action } from 'types/action';
 import { authConstants } from '../constants/auth';
 import { REQUEST, SUCCESS } from '../constants';
+import { User } from '@/types/user';
 
 const initialState = {
   isLoading: false,
@@ -11,7 +12,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action: Action) => {
-  const { payload } = action;
+  const response: User = action.payload?.response;
   switch (action.type) {
     case REQUEST(authConstants.LOGIN):
       return {
@@ -24,7 +25,7 @@ const reducer = (state = initialState, action: Action) => {
       return {
         ...state,
         isLoading: false,
-        user: payload?.response,
+        user: response,
       };
     default:
       return state;

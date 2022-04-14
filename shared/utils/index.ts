@@ -4,7 +4,7 @@ function camelToSnake(value: string) {
   return value.replace(/[\w]([A-Z])/g, m => `${m[0]}_${m[1]}`).toLowerCase();
 }
 
-const stringifyParams = (data: any) => {
+function stringifyParams(data: any) {
   const { params, option } = data;
   return queryString.stringify(params, {
     arrayFormat: 'comma',
@@ -13,12 +13,15 @@ const stringifyParams = (data: any) => {
     skipEmptyString: true,
     ...option,
   });
-};
+}
 
 function getCurrentDomain() {
-  const parts = window.location.hostname.split('.');
-  parts.shift();
-  return parts.join('.');
+  if(typeof window !== 'undefined') {
+    const parts = window?.location.hostname.split('.');
+    parts.shift();
+    return parts.join('.');
+  }
+  return '';
 }
 
 function getUrlRoot(pathname?: string) {

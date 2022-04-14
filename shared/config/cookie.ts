@@ -4,6 +4,7 @@ import { CookieKey } from 'shared/constant/common';
 import { getCurrentDomain } from 'shared/utils';
 
 const cookies = new Cookies();
+
 export const CookiesStorage = {
   getCookieData(key: string) {
     return cookies.get(key);
