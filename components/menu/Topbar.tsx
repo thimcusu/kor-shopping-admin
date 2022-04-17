@@ -11,8 +11,8 @@ type Props = {};
 const Topbar = (props: Props) => {
   const { isExpanded, user } = useSelector((state: RootState) => ({ isExpanded: state.menuReducer.isExpanded, user: state.authReducer.user }));
   return (
-    <nav className="sticky top-0">
-      <div className="flex h-full items-center justify-between py-6 px-5">
+    <nav className="container pl-16 sticky top-0">
+      <div className="flex h-full items-center justify-between py-6 ">
         <div className="">
           <SearchBar />
         </div>

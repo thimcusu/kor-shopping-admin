@@ -13,18 +13,19 @@ type Props = {
   checkReduceIncrease: CheckReduceIncrease;
   value: number;
   price: number;
+  DolaSign: boolean;
 };
 
-const Transaction = ({ Icon, name, checkReduceIncrease, value, price }: Props) => {
+const Transaction = ({ DolaSign, Icon, name, checkReduceIncrease, value, price }: Props) => {
   return (
     <div className="flex w-1/3 items-start justify-start rounded-[10px] bg-[#E5E7F4] py-[16px] pl-[16px]">
       <div className="mr-[20px] inline-flex h-[40px] w-[40px] items-center justify-center rounded-full bg-white">
-        <Icon className="text-accent" />
+        <Icon className="font-bold text-accent" />
       </div>
       <div>
         <p className="mb-5 leading-[22px] text-[#949DAF]">{name}</p>
         <h2 className="mb-5  flex items-center text-[45px] font-bold leading-[56px]">
-          <FiDollarSign className="ml-[-9px]" />
+          {DolaSign && <FiDollarSign className="ml-[-9px]" />}
           {value}
         </h2>
         <p className="flex items-center text-[#6DCD9F]">

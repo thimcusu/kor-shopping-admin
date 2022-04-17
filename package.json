@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS=\"--max_old_space_size=4096\" next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "prettier:format": "prettier --write \"./*/*.{md,json,js,html,ts,tsx,css,scss,yml}\"",
