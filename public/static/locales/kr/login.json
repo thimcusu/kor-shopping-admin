@@ -1,0 +1,12 @@
+{
+  "title": "Welcome back!",
+  "sub_title": "Enter your email address and password to access admin panel.",
+  "password": "Password",
+  "email": "Email",
+  "forgot_password": "Forgot your password?",
+  "wrong_password": "User name or password is incorrect.",
+  "btn_login": "Log In",
+  "remember_me": "Remember me",
+  "email_required": "Username is required",
+  "password_required": "Password is required"
+}

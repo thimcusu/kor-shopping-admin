@@ -1,7 +1,6 @@
 const USER_TYPE = {
   EDITOR: 'EDITOR',
   ADMIN: 'ADMIN',
-  VIEWER: 'VIEWER',
 };
 
 const CookieKey = {
@@ -14,8 +13,8 @@ const CookieKey = {
 const ROUTER = {
   Home: '/',
   PageNotFound: '/404',
-  Login: '/auth',
-  Dashboard: '/order',
+  Login: '/login',
+  Dashboard: '/dashboard',
 };
 
 const RouterPath = {

@@ -3,6 +3,7 @@ type MenuItem = {
   parentId: string;
   active?: boolean;
   children?: any;
+  isExpanded?: boolean;
 };
 
 type MenuChildProps = {
@@ -22,6 +23,7 @@ type MenuChildProps = {
   as?: any;
   childItems?: [MenuChildProps];
   isActive?: boolean;
+  isExpanded?: boolean;
 };
 
 export type { MenuItem, MenuChildProps };

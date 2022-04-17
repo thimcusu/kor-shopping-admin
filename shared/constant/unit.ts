@@ -1,0 +1,3 @@
+const PERCENT = '%';
+
+export { PERCENT };

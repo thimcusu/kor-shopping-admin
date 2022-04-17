@@ -17,7 +17,7 @@ export const makeStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(rootReducers, bindMiddleware([sagaMiddleware]));
 
-  store.sagaTask = sagaMiddleware.run(rootSaga);
+  (store as any).sagaTask = sagaMiddleware.run(rootSaga);
 
   return store;
 };

@@ -1,0 +1,25 @@
+.form-field {
+  @apply relative;
+}
+
+.field-input {
+  @apply w-full px-3 py-2 rounded focus:outline-none border border-blue-700;
+  &:focus,
+  &:not(:placeholder-shown):not(:focus) {
+    & + .field-label .field-label--inner {
+      transform: translateY(-180%);
+      left: 0px;
+    }
+  }
+  &:focus {
+    @apply shadow-md border-none;
+  }
+}
+
+.field-label {
+  @apply absolute inset-0 bg-transparent items-center pointer-events-none;
+  &--inner {
+    transition: all 0.3s ease;
+    @apply absolute top-1/2 transform -translate-y-1/2 left-0 px-3;
+  }
+}

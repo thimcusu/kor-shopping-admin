@@ -1,6 +1,7 @@
+const { transform } = require("typescript");
+
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
       sans: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
@@ -21,10 +22,14 @@ module.exports = {
     },
     extend: {
       colors: {
-        'accent-1': '#FAFAFA',
-        'accent-2': '#EAEAEA',
-        'accent-7': '#333',
-        success: '#0070f3',
+        'background-color': '#F8F6F7',
+        accent: '#F3BBC4',
+        'accent-2': '#CDB7BD',
+        yellow: '#F3D065',
+        'primary-dark': '#323946',
+        'primary-gray': '#949DAF',
+        primary: '#01B553',
+        success: '#A7DFDA',
         cyan: '#79FFE1',
       },
       spacing: {
@@ -45,11 +50,37 @@ module.exports = {
       boxShadow: {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
+        lb: '-5px 5px 13px -3px rgba(0, 0, 0, 0.12)',
       },
+      transitionProperty: {
+        height: 'height',
+        width: 'width',
+      },
+      keyframes: {
+        spread: {
+          '0%': { transform: 'translate(-50%, -50%) scale(0)', opacity: '0'},
+          '50%': {opacity: '0.3'},
+          '100%': { transform: 'translate(-50%, -50%) scale(1)', opacity: '1'},
+        },
+        dnaChainBefore: {
+          '0%': { top: '0', transform: 'translateY(0) scale(1)', opacity: '1' },
+          '25%': { transform: 'translateY(-50%) scale(1.25)', opacity: '0.75', zIndex:'-1'},
+          '50%': { top: '100%', transform: 'translateY(-100%) scale(1)', opacity: '0.5'},
+          '75%': { transform: 'translateY(-100%) scale(0.5)', opacity: '0.75', zIndex:'1'},
+          '100%': { top: '0', transform: 'translateY(0) scale(1)', opacity: '1'},
+        },
+        dnaChainAfter: {
+          '0%': { bottom: '0', transform: 'translateY(0) scale(1)', opacity: '0.5' },
+          '25%': { transform: 'translateY(-50%) scale(0.5)', opacity: '0.75', zIndex:'1'},
+          '50%': { bottom: '100%', transform: 'translateY(-100%) scale(1)', opacity: '1'},
+          '75%': { bottom: 'translateY(-100%) scale(1.25)', opacity: '0.75', zIndex:'-1'},
+          '100%': { bottom: '0', transform: 'translateY(0) scale(1)', opacity: '0.5'},
+        },
+        rotateDNA: {
+          '0%': { transform: 'rotate(0)'},
+          '100%': { transform: 'rotate(360deg)'},
+        }
+      }
     },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
 };
