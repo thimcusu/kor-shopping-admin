@@ -6,22 +6,60 @@ import MainLayout from '@/components/layout/mainLayout';
 import nextI18nextConfig from 'next-i18next.config';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { FiUser, FiFileText, FiDollarSign } from 'react-icons/fi';
 import withAuth from '@/components/HOCs/withAuth';
 import Transaction from './Transaction';
-import { FiUser, FiFileText, FiDollarSign } from 'react-icons/fi';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 type Props = {
   loading: boolean;
 };
+
 enum CheckReduceIncrease {
   REDUCE,
   INCREASE,
   EQUAL,
 }
+
+const options: any = {
+  responsive: true,
+  plugins: [
+    {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Line Chart',
+      },
+    },
+  ],
+  scales: {
+    y: {
+      max: 10000,
+      min: 0,
+      ticks: {
+        stepSize: 1000,
+        callback: (v): String => `$${v}`,
+      },
+    },
+  },
+};
+
+const data = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: [1222, 1944, 3555, 5555, 2555, 3555],
+      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    },
+  ],
+};
 
 const Dashboard = (props: Props) => {
   return (
@@ -54,32 +92,7 @@ const Dashboard = (props: Props) => {
           <p>March 11 2022</p>
         </div>
         <div>
-          <Line
-            options={{
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: 'top' as const,
-                },
-                title: {
-                  display: true,
-                  text: 'Chart.js Line Chart',
-                },
-              },
-            }}
-            data={{
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-              datasets: [
-                {
-                  label: 'Dataset 1',
-                  data: [12, 19, 3, 5, 2, 3],
-                  borderColor: 'rgb(255, 99, 132)',
-                  backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                },
-              ],
-            }}
-          />
-          ;
+          <Line options={options} data={data} />
         </div>
       </div>
     </MainLayout>

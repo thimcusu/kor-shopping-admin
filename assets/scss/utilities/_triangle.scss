@@ -1,0 +1,5 @@
+@layer utilities {
+  .triangle {
+    @apply h-0 w-0 border-l-[7px] border-r-[7px] border-b-[10px] border-solid border-[#6DCD9F] border-r-transparent border-l-transparent;
+  }
+}
