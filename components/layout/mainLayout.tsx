@@ -34,7 +34,7 @@ const MainLayout = (props: Props) => {
         <Sidebar />
         <div id="wrapper" className={`${menuExpanded ? '' : 'sidebar-condensed'}`}>
           <Topbar />
-          <div className="container mt-16 md:px-8 px-4 md:py-6 py-4">
+          <div className="container pl-16 ">
             {children}
           </div>
         </div>
